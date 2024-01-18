@@ -91,7 +91,7 @@ qiime feature-classifier classify-sklearn \
 ##  filter table according to the taxonomy  ##
 ##############################################
 
-#filter features that cannot be classified at least to a phylum level
+## filter features that cannot be classified at least to a phylum level
 qiime taxa filter-table \
  --i-table raw_table.qza \
  --i-taxonomy taxonomy.qza \
@@ -99,7 +99,7 @@ qiime taxa filter-table \
  --p-mode 'contains' \
  --o-filtered-table raw_table_filtered_1.qza
 
-#filter features that are classified as mitochondria
+## filter features that are classified as mitochondria
 qiime taxa filter-table \
  --i-table raw_table_filtered_1.qza \
  --i-taxonomy taxonomy.qza \
@@ -107,7 +107,7 @@ qiime taxa filter-table \
  --p-mode 'contains' \
  --o-filtered-table raw_table_filtered_2.qza
 
-#filter features that are unclassified
+## filter features that are unclassified
 qiime taxa filter-table \
  --i-table raw_table_filtered_2.qza \
  --i-taxonomy taxonomy.qza \
@@ -115,7 +115,7 @@ qiime taxa filter-table \
  --p-mode 'contains' \
  --o-filtered-table raw_table_filtered_3.qza
 
-#filter features that are classified as chloroplast
+## filter features that are classified as chloroplast
 qiime taxa filter-table \
  --i-table raw_table_filtered_3.qza \
  --i-taxonomy taxonomy.qza \
@@ -123,7 +123,7 @@ qiime taxa filter-table \
  --p-mode 'contains' \
  --o-filtered-table raw_table_filtered_4.qza
 
-#filter features that are classified as archaea
+## filter features that are classified as archaea
 qiime taxa filter-table \
  --i-table raw_table_filtered_4.qza \
  --i-taxonomy taxonomy.qza \
@@ -131,13 +131,13 @@ qiime taxa filter-table \
  --p-mode 'contains' \
  --o-filtered-table table_filtered_clean.qza
 
-#remove intermediate files
+## remove intermediate files
 rm raw_table_filtered_1.qza
 rm raw_table_filtered_2.qza
 rm raw_table_filtered_3.qza
 rm raw_table_filtered_4.qza
 
-#remove singleton and doubleton features
+## remove singleton and doubleton features
 qiime feature-table filter-features \
  --i-table table_filtered_clean.qza \
  --p-min-frequency 3 \
@@ -148,7 +148,7 @@ qiime feature-table filter-features \
 ##  filter rep_seq according to the taxonomy  ##
 ################################################
 
-#filter sequences that cannot be classified at least to a phylum level
+## filter sequences that cannot be classified at least to a phylum level
 qiime taxa filter-seqs \
  --i-sequences raw_rep-seqs.qza \
  --i-taxonomy taxonomy.qza \
@@ -156,7 +156,7 @@ qiime taxa filter-seqs \
  --p-mode 'contains' \
  --o-filtered-sequences raw_rep-seqs_filtered_1.qza
 
-#filter sequences that are classified as mitochondria
+## filter sequences that are classified as mitochondria
 qiime taxa filter-seqs \
  --i-sequences raw_rep-seqs_filtered_1.qza \
  --i-taxonomy taxonomy.qza \
@@ -164,7 +164,7 @@ qiime taxa filter-seqs \
  --p-mode 'contains' \
  --o-filtered-sequences raw_rep-seqs_filtered_2.qza
 
-#filter sequences that are unclassified
+## filter sequences that are unclassified
 qiime taxa filter-seqs \
  --i-sequences raw_rep-seqs_filtered_2.qza \
  --i-taxonomy taxonomy.qza \
@@ -172,7 +172,7 @@ qiime taxa filter-seqs \
  --p-mode 'contains' \
  --o-filtered-sequences raw_rep-seqs_filtered_3.qza
 
-#filter sequences that are classified as chloroplast
+## filter sequences that are classified as chloroplast
 qiime taxa filter-seqs \
  --i-sequences raw_rep-seqs_filtered_3.qza \
  --i-taxonomy taxonomy.qza \
@@ -180,7 +180,7 @@ qiime taxa filter-seqs \
  --p-mode 'contains' \
  --o-filtered-sequences raw_rep-seqs_filtered_4.qza
 
-#filter sequences that are classified as archaea
+## filter sequences that are classified as archaea
 qiime taxa filter-seqs \
  --i-sequences raw_rep-seqs_filtered_4.qza \
  --i-taxonomy taxonomy.qza \
@@ -188,20 +188,20 @@ qiime taxa filter-seqs \
  --p-mode 'contains' \
  --o-filtered-sequences rep-seqs_filtered_clean.qza
 
-#remove intermediate files
+## remove intermediate files
 rm raw_rep-seqs_filtered_1.qza
 rm raw_rep-seqs_filtered_2.qza
 rm raw_rep-seqs_filtered_3.qza
 rm raw_rep-seqs_filtered_4.qza
 
-#filter the rep seq qith the filtered table
+## filter the rep seq qith the filtered table
 qiime feature-table filter-seqs \
  --i-data rep-seqs_filtered_clean.qza \
  --i-table table_filtered_clean_LC3.qza \
  --p-no-exclude-ids \
  --o-filtered-data rep-seqs_filtered_clean_LC3.qza
 
-#Export the rep seq and check number of ASVs
+## Export the rep seq and check number of ASVs
 grep -o '>' dna-sequences.fasta | wc -l
 
 
@@ -237,7 +237,7 @@ qiime diversity alpha-group-significance \
   --m-metadata-file ../metadata/metadata_qiime_final.tsv \
   --o-visualization goods_coverage_significance.qzv
 
-
+cd ../
 
 
 ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛
@@ -286,7 +286,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - jaccard - genus
+## PERMANOVA - jaccard - genus
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -296,7 +296,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - jaccard - family
+## PERMANOVA - jaccard - family
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -306,7 +306,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - jaccard - microhabitat
+## PERMANOVA - jaccard - microhabitat
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -316,7 +316,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - jaccard - sex
+## PERMANOVA - jaccard - sex
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -326,7 +326,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - jaccard - locality
+## PERMANOVA - jaccard - locality
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -336,7 +336,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - jaccard - terrestriality
+## PERMANOVA - jaccard - terrestriality
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -346,7 +346,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - jaccard - gutregion
+## PERMANOVA - jaccard - gutregion
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -356,7 +356,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - jaccard - diet
+## PERMANOVA - jaccard - diet
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -370,7 +370,7 @@ qiime diversity beta-group-significance \
 
 ## bray_curtis distance
 
-#PERMANOVA - bray_curtis - species
+## PERMANOVA - bray_curtis - species
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -380,7 +380,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - bray_curtis - genus
+## PERMANOVA - bray_curtis - genus
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -390,7 +390,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - bray_curtis - family
+## PERMANOVA - bray_curtis - family
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -400,7 +400,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - bray_curtis - microhabitat
+## PERMANOVA - bray_curtis - microhabitat
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -410,7 +410,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - bray_curtis - sex
+## PERMANOVA - bray_curtis - sex
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -420,7 +420,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - bray_curtis - locality
+## PERMANOVA - bray_curtis - locality
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -430,7 +430,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - bray_curtis - terrestriality
+## PERMANOVA - bray_curtis - terrestriality
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -440,7 +440,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - bray_curtis - gutregion
+## PERMANOVA - bray_curtis - gutregion
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -450,7 +450,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - bray_curtis - diet
+## PERMANOVA - bray_curtis - diet
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -464,7 +464,7 @@ qiime diversity beta-group-significance \
 
 ## unweighted_unifrac distance
 
-#PERMANOVA - unweighted_unifrac - species
+## PERMANOVA - unweighted_unifrac - species
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -474,7 +474,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - unweighted_unifrac - genus
+## PERMANOVA - unweighted_unifrac - genus
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -484,7 +484,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - unweighted_unifrac - family
+## PERMANOVA - unweighted_unifrac - family
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -494,7 +494,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - unweighted_unifrac - microhabitat
+## PERMANOVA - unweighted_unifrac - microhabitat
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -504,7 +504,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - unweighted_unifrac - sex
+## PERMANOVA - unweighted_unifrac - sex
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -514,7 +514,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - unweighted_unifrac - locality
+## PERMANOVA - unweighted_unifrac - locality
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -524,7 +524,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - unweighted_unifrac - terrestriality
+## PERMANOVA - unweighted_unifrac - terrestriality
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -534,7 +534,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - unweighted_unifrac - gutregion
+## PERMANOVA - unweighted_unifrac - gutregion
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -544,7 +544,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - unweighted_unifrac - diet
+## PERMANOVA - unweighted_unifrac - diet
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/unweighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -558,7 +558,7 @@ qiime diversity beta-group-significance \
 
 ## weighted_unifrac distance
 
-#PERMANOVA - weighted_unifrac - species
+## PERMANOVA - weighted_unifrac - species
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -568,7 +568,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - weighted_unifrac - genus
+## PERMANOVA - weighted_unifrac - genus
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -578,7 +578,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - weighted_unifrac - family
+## PERMANOVA - weighted_unifrac - family
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -588,7 +588,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - weighted_unifrac - microhabitat
+## PERMANOVA - weighted_unifrac - microhabitat
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -598,7 +598,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - weighted_unifrac - sex
+## PERMANOVA - weighted_unifrac - sex
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -608,7 +608,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - weighted_unifrac - locality
+## PERMANOVA - weighted_unifrac - locality
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -618,7 +618,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - weighted_unifrac - terrestriality
+## PERMANOVA - weighted_unifrac - terrestriality
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -628,7 +628,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - weighted_unifrac - gutregion
+## PERMANOVA - weighted_unifrac - gutregion
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -638,7 +638,7 @@ qiime diversity beta-group-significance \
   --p-permutations 9999 \
   --p-method permanova
 
-#PERMANOVA - weighted_unifrac - diet
+## PERMANOVA - weighted_unifrac - diet
 qiime diversity beta-group-significance \
   --i-distance-matrix core-metrics-results_LC3/weighted_unifrac_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1040,7 +1040,7 @@ qiime diversity beta-group-significance \
 
 mkdir PERMANOVA_LC3-family
 
-#Dotillidae
+## Dotillidae
 qiime feature-table filter-samples \
   --i-table table_filtered_clean_LC3.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1057,7 +1057,7 @@ qiime diversity core-metrics-phylogenetic \
   --output-dir PERMANOVA_LC3-family/core-metrics-results_Dotillidae
 
 
-#Grapsidae
+## Grapsidae
 qiime feature-table filter-samples \
   --i-table table_filtered_clean_LC3.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1074,7 +1074,7 @@ qiime diversity core-metrics-phylogenetic \
   --output-dir PERMANOVA_LC3-family/core-metrics-results_Grapsidae
 
 
-#Macrophthalmidae
+## Macrophthalmidae
 qiime feature-table filter-samples \
   --i-table table_filtered_clean_LC3.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1091,7 +1091,7 @@ qiime diversity core-metrics-phylogenetic \
   --output-dir PERMANOVA_LC3-family/core-metrics-results_Macrophthalmidae
 
 
-#Ocypodidae
+## Ocypodidae
 qiime feature-table filter-samples \
   --i-table table_filtered_clean_LC3.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1108,7 +1108,7 @@ qiime diversity core-metrics-phylogenetic \
   --output-dir PERMANOVA_LC3-family/core-metrics-results_Ocypodidae
 
 
-#Portunidae
+## Portunidae
 qiime feature-table filter-samples \
   --i-table table_filtered_clean_LC3.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1125,7 +1125,7 @@ qiime diversity core-metrics-phylogenetic \
   --output-dir PERMANOVA_LC3-family/core-metrics-results_Portunidae
 
 
-#Sesarmidae
+## Sesarmidae
 qiime feature-table filter-samples \
   --i-table table_filtered_clean_LC3.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1142,7 +1142,7 @@ qiime diversity core-metrics-phylogenetic \
   --output-dir PERMANOVA_LC3-family/core-metrics-results_Sesarmidae
 
 
-#Varunidae
+## Varunidae
 qiime feature-table filter-samples \
   --i-table table_filtered_clean_LC3.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1240,7 +1240,6 @@ qiime diversity adonis \
   --p-n-jobs 10 \
   --o-visualization Adonis_LC3/adonis-jaccard-diet.qzv
   
-  
 qiime diversity adonis \
   --i-distance-matrix core-metrics-results_LC3/jaccard_distance_matrix.qza \
   --m-metadata-file metadata/metadata_qiime_final.tsv \
@@ -1324,7 +1323,6 @@ qiime diversity adonis \
   --p-permutations 9999 \
   --p-n-jobs 10 \
   --o-visualization Adonis_LC3/adonis-bray_curtis-diet.qzv
-  
   
 qiime diversity adonis \
   --i-distance-matrix core-metrics-results_LC3/bray_curtis_distance_matrix.qza \
