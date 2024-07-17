@@ -3,7 +3,7 @@ The acquisition of microbial symbionts enables animals to rapidly adapt to and e
 
 ## Major results
 We found varying strength of phylosymbiosis after accounting for the effect of microhabitat preference using partial Pearson's correlation.
-![Phylosymbiosis_partial_correlation_IToL](https://github.com/user-attachments/assets/10a0f5d1-9066-4625-9cb2-b0d3cedc1eef)
+![Phylosymbiosis_partial_correlation_IToL_GitHub](https://github.com/user-attachments/assets/e0bf1997-fb91-4ada-9e82-5429f841ff14)
 
 We also found several cases of codiversification of the core gut bacterial genera in mangrove sesarmid crabs.
 ![Figure 6 Cophylogeny plots - GitHub](https://github.com/user-attachments/assets/b0e8ea6d-f088-4a27-b7cf-ab717d041c66)
