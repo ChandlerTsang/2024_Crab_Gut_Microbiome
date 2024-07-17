@@ -5,13 +5,16 @@ The acquisition of microbial symbionts enables animals to rapidly adapt to and e
 
 **Citation:** Tsang, C. T. T., Hui, T. K. L., Chung, N. M., Yuen, W. T., & Tsang, L. M. (2024). Comparative analysis of gut microbiome of mangrove brachyuran crabs revealed patterns of phylosymbiosis and codiversification. _Molecular Ecology_, 33(12), e17377. https://doi.org/10.1111/mec.17377
 
-## Breif summary of methods
+## Brief summary of methods
 We generated 16S gut microbiome data from the digestive tracts of 43 crab species. The species were carefully chosen in order to test the effect of ecological, biological, and environmental factors on the asemblage and composition of gut microbiome. We tested if there are signals of phylosymbiosis across different crab groups. We further systematically tested for the signal of codiversification in the core microbiome of the sampled crabs.
 
 ## Major results
 We found varying strength of phylosymbiosis after accounting for the effect of microhabitat preference using partial Pearson's correlation.
 ![Phylosymbiosis_partial_correlation_IToL_GitHub](https://github.com/user-attachments/assets/e0bf1997-fb91-4ada-9e82-5429f841ff14)
 
-We also found several cases of codiversification of the core gut bacterial genera in mangrove sesarmid crabs.
+We also found several cases of codiversification of the core gut bacterial genera in mangrove sesarmid crabs. Interestingly, these core bacterial genera appeared to play crucial functional roles in their hosts by providing lignocellulolytic enzymes, essential amino acids, and fatty acids supplementation.
 ![Figure 6 Cophylogeny plots - GitHub](https://github.com/user-attachments/assets/b0e8ea6d-f088-4a27-b7cf-ab717d041c66)
 
+## Related research
+Lee, C. Y., & Lee, S. Y. (2024). Contribution of aerobic cellulolytic gut bacteria to cellulose digestion in fifteen coastal grapsoid crabs underpins potential for mineralization of mangrove production. _Current Microbiology_, 81(8), 224. https://doi.org/10.1007/s00284-024-03718-5
+Hui, T.K.L., Lo, I.C.N., Wong, K.K.W., Tsang, C. T. T., & Tsang, L. M. (2024). Metagenomic analysis of gut microbiome illuminates the mechanisms and evolution of lignocellulose degradation in mangrove herbivorous crabs. _BMC Microbiology_, 24, 57. https://doi.org/10.1186/s12866-024-03209-4
