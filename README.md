@@ -17,4 +17,5 @@ We also found several cases of codiversification of the core gut bacterial gener
 
 ## Related research
 Lee, C. Y., & Lee, S. Y. (2024). Contribution of aerobic cellulolytic gut bacteria to cellulose digestion in fifteen coastal grapsoid crabs underpins potential for mineralization of mangrove production. _Current Microbiology_, 81(8), 224. https://doi.org/10.1007/s00284-024-03718-5
+
 Hui, T.K.L., Lo, I.C.N., Wong, K.K.W., Tsang, C. T. T., & Tsang, L. M. (2024). Metagenomic analysis of gut microbiome illuminates the mechanisms and evolution of lignocellulose degradation in mangrove herbivorous crabs. _BMC Microbiology_, 24, 57. https://doi.org/10.1186/s12866-024-03209-4
